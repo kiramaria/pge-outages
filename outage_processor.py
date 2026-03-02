@@ -289,17 +289,17 @@ def compute_outage_stats(records):
         if est is not None and isinstance(est, (int, float)):
             stats["total_customers_affected"] += est
 
-        cause = record.get("OUTAGE_CAUSE", "UNKNOWN")
+        cause = record.get("OUTAGE_CAUSE") or "UNKNOWN"
         stats["outages_by_cause"][cause] = (
             stats["outages_by_cause"].get(cause, 0) + 1
         )
 
-        city = record.get("CITY", "UNKNOWN")
+        city = record.get("CITY") or "UNKNOWN"
         stats["outages_by_city"][city] = (
             stats["outages_by_city"].get(city, 0) + 1
         )
 
-        crew = record.get("CREW_CURRENT_STATUS", "UNKNOWN")
+        crew = record.get("CREW_CURRENT_STATUS") or "UNKNOWN"
         stats["outages_by_crew_status"][crew] = (
             stats["outages_by_crew_status"].get(crew, 0) + 1
         )
