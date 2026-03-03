@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "pge-outages"
+version = "0.1.0"
+description = "Python modules for fetching, transforming, and validating PG&E outage data"
+requires-python = ">=3.10"
+dependencies = [
+    "csv-diff",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.coverage.run]
+source = ["pge_outages"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 90
